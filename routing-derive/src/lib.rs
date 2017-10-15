@@ -48,15 +48,12 @@ fn impl_routing_table(ast: &syn::DeriveInput) -> quote::Tokens {
       }
     };
 
-    println!("{:?}", impl_tokens);
-
     impl_tokens
   } else {
     panic!("#[derive(RoutingTable)] is only defined for enums, not for structs!");
   }
 }
 
-// TODO validations
 fn process_variant(variant: &Variant) -> Option<(quote::Ident, quote::Ident, String)> {
   for ref attr in &variant.attrs {
     if let MetaItem::List(ref http_ident, ref nested) = attr.value {
