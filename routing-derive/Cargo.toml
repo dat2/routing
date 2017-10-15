@@ -1,0 +1,11 @@
+[package]
+name = "routing-derive"
+version = "0.1.0"
+authors = ["Nicholas Dujay <nickdujay@gmail.com>"]
+
+[dependencies]
+syn = "0.11"
+quote = "0.3"
+
+[lib]
+proc-macro = true
