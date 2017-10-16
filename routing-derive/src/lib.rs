@@ -232,6 +232,7 @@ fn parse_path(path: &str) -> Vec<HttpPathSegment> {
 // the context will be a map of { ident => regex_string }
 fn interpolate(segments: Vec<HttpPathSegment>, context: HashMap<String, String>) -> String {
   let mut regex_string = String::new();
+  regex_string.push_str(r"^");
   for segment in &segments {
     regex_string.push('/');
     match segment {
@@ -242,7 +243,7 @@ fn interpolate(segments: Vec<HttpPathSegment>, context: HashMap<String, String>)
       &HttpPathSegment::Lit(ref el) => regex_string.push_str(&el)
     };
   }
-  regex_string.push_str(r"/?");
+  regex_string.push_str(r"/?$");
   regex_string
 }
 
